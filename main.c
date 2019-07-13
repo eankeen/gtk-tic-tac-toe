@@ -9,26 +9,6 @@ static void create_app_menu(GtkApplication *app) {
   // bool a = gtk_application_prefers_app_menu(app);
 }
 
-int count = 0;
-
-
-// static void do_calculate(GtkWidget *calculate, gpointer data) {
-//   int num1 = atoi((char *)gtk_entry_get_text(GTK_ENTRY(number1)));
-//   int num2 = atoi((char *)gtk_entry_get_text(GTK_ENTRY(number2)));
-
-//   char buffer[32];
-//   snprintf(buffer, sizeof(buffer), "result: %d", num1 + num2);
-
-//   gtk_label_set_text(GTK_LABEL(result), buffer);
-// }
-
-// static void count_button(GtkWidget *widget, gpointer ptr) {
-//   char buffer[30];
-//   count++;
-//   sprintf(buffer, "Button pressed %d times", count);
-//   gtk_button_set_label(GTK_BUTTON(ptr), buffer);
-// }
-
 static void activate (GtkApplication* app, gpointer data) {
   // window
   GtkWidget *window;
@@ -45,13 +25,18 @@ static void activate (GtkApplication* app, gpointer data) {
   gtk_container_add(GTK_CONTAINER(window), grid);
   gtk_grid_set_column_spacing(GTK_GRID(grid), 5);
   gtk_grid_set_row_spacing(GTK_GRID(grid), 5);
-  gtk_grid_set_column_homogeneous(GTK_GRID(grid), TRUE);
+  gtk_grid_set_column_homogeneous(GTK_GRID(grid), FALSE);
 
-  // btn
+  // north-west button
   GtkWidget *north_west_button;
   north_west_button = gtk_button_new();
   // g_signal_connect(btn, "clicked", G_CALLBACK(count_button), btn);
-  gtk_grid_attach(GTK_GRID(grid), GTK_WIDGET(north_west_button), 0, 0, 1, 40);
+  // gtk_grid_attach(GTK_GRID(grid), GTK_WIDGET(north_west_button), 0, 0, 1, 40);
+
+  GtkWidget *image;
+  image = gtk_image_new_from_file("./o.png");
+  // gtk_image_set_pixel_size(nwi, 500);
+  gtk_grid_attach(GTK_GRID(grid), GTK_WIDGET(image), 0, 0, 1, 40);
 
   GtkWidget *north_button;
   north_button = gtk_button_new();
